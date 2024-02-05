@@ -1,18 +1,18 @@
 package org.example.geomapper.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GeocoderResponseMetaData implements Serializable {
-    private String request;
-    private Long found;
-    private Long results;
+public class Locality {
+    @JsonProperty("LocalityName")
+    private String localityName;
+    @JsonProperty("Thoroughfare")
+    private Thoroughfare thoroughfare;
 }

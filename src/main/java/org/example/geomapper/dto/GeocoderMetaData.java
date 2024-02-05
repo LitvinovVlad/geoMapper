@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MetaDataProperty implements Serializable {
-    @JsonProperty("GeocoderResponseMetaData")
-    private GeocoderMetaData geocoderMetaData;
+public class GeocoderMetaData {
+    @JsonProperty("AddressDetails")
+    private AddressDetails addressDetails;
 }

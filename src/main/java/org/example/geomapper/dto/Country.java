@@ -6,13 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MetaDataProperty implements Serializable {
-    @JsonProperty("GeocoderResponseMetaData")
-    private GeocoderMetaData geocoderMetaData;
+public class Country {
+    @JsonProperty("CountryName")
+    private String countryName;
+    @JsonProperty("AdministrativeArea")
+    private AdministrativeArea administrativeArea;
 }
