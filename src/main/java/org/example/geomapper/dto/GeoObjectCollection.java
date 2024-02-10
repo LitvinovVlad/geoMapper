@@ -17,8 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GeoObjectCollection implements Serializable {
-    //    @JsonProperty("featureMember")
-//    private List<FeatureMember> featureMember;
     @JsonProperty("featureMember")
-    private JSONArray featureMember;
+    private List<FeatureMember> featureMember;
 }

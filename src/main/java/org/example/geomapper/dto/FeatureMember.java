@@ -6,12 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.json.JSONObject;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
-public class FeatureMember {
+public class FeatureMember extends JSONObject {
     @JsonProperty("GeoObject")
     private GeoObject geoObject;
 }

@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.json.JSONObject;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AddressDetails {
+public class AddressDetails extends JSONObject {
     @JsonProperty("Country")
-    private Country country;
+    private AddressLine addressLine;
 }

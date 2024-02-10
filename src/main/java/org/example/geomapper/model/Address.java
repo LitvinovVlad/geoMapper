@@ -1,4 +1,4 @@
-package org.example.geomapper.entity;
+package org.example.geomapper.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,10 +12,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Geolocation {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double latitude;
-    private Double longitude;
+    private String addressLine;
+    private String coordinates;
+    private String request;
 }
