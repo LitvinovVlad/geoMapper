@@ -1,5 +1,6 @@
 package org.example.geomapper.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.geomapper.configurations.ApiConfig;
@@ -36,20 +37,23 @@ public class ApiService {
         String apiKey = apiConfig.getApiKey();
         String requestForUri = request.replaceAll(" ", "+");
         URI uri = new URI("https://geocode-maps.yandex.ru/1.x/?apikey=" + apiKey + "&geocode=" + requestForUri + "&format=json&lang=ru_RU");
+        return performApiRequest(uri, request);
+    }
+
+    public AddressDto performApiRequest(URI uri, String request) throws JsonProcessingException {
         String response = restClient.get().uri(uri).retrieve().body(String.class);
         ApiYandexDto apiYandexDto = objectMapper.readValue(response, ApiYandexDto.class);
         apiYandexDto.fillingRequest(request);
-        if (addressRepository.existsByRequest(request)) {
-            Address address = apiYandexDto.toEntity();
-            return createAddress(address);
-        }
-        else {
-            Address address = addressRepository.save(apiYandexDto.toEntity());
-            return createAddress(address);
-        }
+        return createAddressDto(request, apiYandexDto);
     }
 
-    public AddressDto createAddress(Address address) {
-        return modelMapper.map(address, AddressDto.class);
+    public AddressDto createAddressDto(String request, ApiYandexDto apiYandexDto) {
+        if (addressRepository.existsByRequest(request)) {
+            Address address = apiYandexDto.toEntity();
+            return modelMapper.map(address, AddressDto.class);
+        } else {
+            Address address = addressRepository.save(apiYandexDto.toEntity());
+            return modelMapper.map(address, AddressDto.class);
+        }
     }
 }

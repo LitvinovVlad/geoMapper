@@ -15,12 +15,12 @@ public class ApiYandexDto {
     private String request;
     private Address address = new Address();
 
-    public void fillingRequest(String request){
+    public void fillingRequest(String request) {
         address.setRequest(request);
     }
 
     public Address toEntity() {
-        String coordinates=
+        String coordinates =
                 response
                         .getGeoObjectCollection()
                         .getFeatureMember().get(0)

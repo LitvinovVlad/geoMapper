@@ -1,7 +1,5 @@
 package org.example.geomapper.api;
 
-import org.example.geomapper.dto.ApiYandexDto;
-import org.example.geomapper.model.Address;
 import org.example.geomapper.services.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
